@@ -1,6 +1,6 @@
 # Parsers Exploration
 
-Hello! This is a repository where I will be writing some code to explore how parsers work and can be implemented. Generally speaking, the code in this repository allows for encoding grammars into typescript files and doing things with those grammars (parsing strings in tha language of those grammars, generating stings in those grammars, etc).
+Hello! This is a repository where I will be writing some code to explore how parsers work and can be implemented. Generally speaking, the code in this repository allows for writing formal grammars as values in a typescript file and doing things with those grammars (parsing strings in the language of those grammars, generating stings in those grammars, etc).
 
 As time goes on, this repository may take on a more intentional purpose, but for now it is mainly exploratory in nature.
 
