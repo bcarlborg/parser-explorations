@@ -1,0 +1,4 @@
+# ingnore the dist directory where typescript outputs everything
+dist
+
+node_modules
