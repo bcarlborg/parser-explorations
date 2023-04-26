@@ -3,7 +3,7 @@
  * context free grammars in TS. The way these types are structured will ensure that
  * 1. every NonTerminal is used in the left hand side of a grammar production
  * 2. the Start Symbol of the grammar is a Non Terminal in the grammar
- * 3. all productions are in one of the following forms (A,B,C are some non-terminals, x is some terminal)
+ * 3. all productions are in one of the following forms (A,B,C are some non-Terminal, x is some terminal)
  *    - A -> B
  *    - A -> BC
  *    - A -> x
@@ -20,30 +20,30 @@
  */
 
 export type GrammarRuleLeftHandSide<
-    NonTerminals extends string
-> = NonTerminals;
+    NonTerminal extends string
+> = NonTerminal;
 
 export type GrammarRuleRightHandSide<
-    NonTerminals extends string,
-    Terminals extends string
-> = {terminal: Terminals}
-| { nonTerminal1: NonTerminals}
-| { nonTerminal1: NonTerminals, nonTerminal2: NonTerminals};
+    NonTerminal extends string,
+    Terminal extends string
+> = {terminal: Terminal}
+| { nonTerminal1: NonTerminal}
+| { nonTerminal1: NonTerminal, nonTerminal2: NonTerminal};
 
 export type GrammarRuleRightHandSides<
-    NonTerminals extends string,
-    Terminals extends string
-> = GrammarRuleRightHandSide<NonTerminals, Terminals>[];
+    NonTerminal extends string,
+    Terminal extends string
+> = GrammarRuleRightHandSide<NonTerminal, Terminal>[];
 
 export type GrammarRules<
-    NonTerminals extends string,
-    Terminals extends string
-> = Record<NonTerminals, GrammarRuleRightHandSides<NonTerminals, Terminals>>;
+    NonTerminal extends string,
+    Terminal extends string
+> = Record<NonTerminal, GrammarRuleRightHandSides<NonTerminal, Terminal>>;
 
 export interface Grammar<
-    NonTerminals extends string,
-    Terminals extends string
+    NonTerminal extends string,
+    Terminal extends string
 > {
-    startSymbol: NonTerminals;
-    rules: GrammarRules<NonTerminals, Terminals>;
+    startSymbol: NonTerminal;
+    rules: GrammarRules<NonTerminal, Terminal>;
 }

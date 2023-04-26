@@ -7,9 +7,9 @@ import type {Grammar, GrammarRuleRightHandSides, GrammarRuleRightHandSide } from
 // productions from the start string and choosing random valid productions along the way
 //
 export function generateRandomStringsForECNFGrammar<
-    NonTerminals extends string,
-    Terminals extends string
->(grammar: Grammar<NonTerminals, Terminals>, numberOfStrings: number) {
+    NonTerminal extends string,
+    Terminal extends string
+>(grammar: Grammar<NonTerminal, Terminal>, numberOfStrings: number) {
     for (let i = 0; i < 100; i++) {
         const generatedString = generateRandomProductions(grammar, grammar.rules[grammar.startSymbol], '');
         console.log(generatedString);
@@ -21,11 +21,11 @@ export function generateRandomStringsForECNFGrammar<
 // strings for each production by calling generateRandomProduction()
 //
 function generateRandomProductions<
-    NonTerminals extends string,
-    Terminals extends string
+    NonTerminal extends string,
+    Terminal extends string
 >(
-    grammar: Grammar<NonTerminals, Terminals>,
-    productions: GrammarRuleRightHandSides<NonTerminals, Terminals>,
+    grammar: Grammar<NonTerminal, Terminal>,
+    productions: GrammarRuleRightHandSides<NonTerminal, Terminal>,
     generatedString: string
 ): string {
     // if there is only one production in the array of productions,
@@ -52,11 +52,11 @@ function generateRandomProductions<
 // A recursive function that will generate a random string that is valid for a specific production
 //
 function generateRandomProduction<
-    NonTerminals extends string,
-    Terminals extends string
+    NonTerminal extends string,
+    Terminal extends string
 >(
-    grammar: Grammar<NonTerminals, Terminals>,
-    currentProduction: GrammarRuleRightHandSide<NonTerminals, Terminals>,
+    grammar: Grammar<NonTerminal, Terminal>,
+    currentProduction: GrammarRuleRightHandSide<NonTerminal, Terminal>,
     generatedString: string
 ): string {
     // then we have a terminal we can produce! lets produce it baby!
@@ -68,7 +68,7 @@ function generateRandomProduction<
         return generateRandomProductions(grammar, grammar.rules[currentProduction.nonTerminal1], generatedString);
     }
 
-    // at this point, we know that the production has two non terminals in it
+    // at this point, we know that the production has two non Terminal in it
     const extendedString = generateRandomProductions(grammar, grammar.rules[currentProduction.nonTerminal1], generatedString);
     return generateRandomProductions(grammar, grammar.rules[currentProduction.nonTerminal2], extendedString);
 }

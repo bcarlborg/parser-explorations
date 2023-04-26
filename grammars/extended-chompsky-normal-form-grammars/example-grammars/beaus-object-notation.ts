@@ -1,6 +1,6 @@
 import type {Grammar, GrammarRuleRightHandSides, GrammarRuleRightHandSide } from '../grammar-types';
 
-type BON_NON_TERMINALS = 'ARRAY' 
+type BON_NON_TERMINAL = 'ARRAY' 
 | 'OPEN_CONTENT' 
 | 'CLOSE_CONTENT' 
 | 'LEFT_BRACKET' 
@@ -16,7 +16,7 @@ type BON_NON_TERMINALS = 'ARRAY'
 | 'CONTENTS' 
 | 'COMMA';
 
-type BON_TERMINALS = ','
+type BON_TERMINAL = ','
 | '['
 | ']'
 | ','
@@ -58,7 +58,7 @@ type BON_TERMINALS = ','
 | 'y'
 | 'z'
 
-export const BON_GRAMMAR: Grammar<BON_NON_TERMINALS, BON_TERMINALS> = {
+export const BON_GRAMMAR: Grammar<BON_NON_TERMINAL, BON_TERMINAL> = {
     startSymbol: 'ARRAY',
     rules: {
         // Array -> Left_bracket Right_bracket
