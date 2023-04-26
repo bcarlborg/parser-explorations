@@ -34,8 +34,11 @@ cd parser-explorations
 # for this project
 tsc --build
 
+# alternatively, if you wish to build with sourcemaps to enable debugging ts,
+tsc --build --sourcemap
+
 # run the main file
-node main.js
+node dist/main.js
 
 # cleanup the generate js files when you are done
 tsc --build --clean
